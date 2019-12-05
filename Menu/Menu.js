@@ -21,7 +21,22 @@ function createMenu(array) {
 
 	const button = document.querySelector('.menu-button');
 	button.addEventListener('click', () => {
-		menu.classList.toggle('menu--open');
+    menu.classList.toggle('menu--open');
+
+// this was my attempt at using GSAP to animate the menu, but I couldn't get it to work at all. No errors, just absolutely 0 change on the site
+		var timeLine = new TimelineMax({ paused: true, reversed: true });
+
+		timeLine
+			.to('#burger1', 0.5, { rotation: 45, transformOrigin: 'left 50%', ease: Power2.easeInOut }, 'cross')
+			.to('#burger2', 0.5, { autoAlpha: 0 }, 'cross')
+			.to('#burger3', 0.5, { rotation: -45, transformOrigin: 'left 50%', ease: Power2.easeInOut }, 'cross')
+			.to('.header', 0.75, { x: '-300px', ease: Power2.easeInOut });
+
+		function menuIn() {
+			menu.reversed() ? menu.play() : menu.reverse();
+    }
+// And back to MVP Code
+
 	});
 
 	return menu;

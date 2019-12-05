@@ -2,6 +2,9 @@
 
 let menuItems = ['Students', 'Faculty', "What's New", 'Tech Trends', 'Music', 'Log Out'];
 
+const button = document.querySelector('.menu-button');
+const siteHeader = document.querySelector('.header');
+
 function createMenu(array) {
 	const menu = document.createElement('div');
 	const list = document.createElement('ul');
@@ -16,18 +19,15 @@ function createMenu(array) {
 		list.append(listItem);
 	});
 
-  const button = document.querySelector;(.menu-button);
-button.addEventListener('click'  =>{
-menu.classList.toggle('menu--open');
-
-})
-
+	const button = document.querySelector('.menu-button');
+	button.addEventListener('click', () => {
+		menu.classList.toggle('menu--open');
+	});
 
 	return menu;
 }
 
-const siteHeader = document.querySelector('.menu-button');
-siteHeader.prepend(createMenu(menuItems));
+siteHeader.append(createMenu(menuItems));
 
 /*
 
